@@ -154,7 +154,7 @@ describe("validation and adversarial inputs", () => {
     const root = await scaffold("custom-gpt-action", "unsafe-action");
     const actionPath = join(root, "custom-gpt", "openapi.yaml");
     const original = await readFile(actionPath, "utf8");
-    await writeFile(actionPath, original.replace("      operationId: getItem\n", ""));
+    await writeFile(actionPath, original.replace(/^ {6}operationId: getItem\r?\n/m, ""));
     const report = await validatePlugin(root);
     expect(report.status).toBe("invalid");
     expect(report.errors.map((item) => item.code)).toContain("custom-gpt.openapi.operation-id");

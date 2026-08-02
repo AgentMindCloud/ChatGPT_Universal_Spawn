@@ -1,0 +1,34 @@
+{
+  "name": "chatgpt-universal-spawn",
+  "version": "0.1.0",
+  "description": "Guide users through creating safe, valid ChatGPT-first plugin packages.",
+  "author": {
+    "name": "AgentMindCloud",
+    "url": "https://github.com/AgentMindCloud"
+  },
+  "homepage": "https://github.com/AgentMindCloud/ChatGPT_Universal_Spawn",
+  "repository": "https://github.com/AgentMindCloud/ChatGPT_Universal_Spawn",
+  "license": "Apache-2.0",
+  "keywords": ["chatgpt", "plugins", "skills", "mcp"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "ChatGPT Universal Spawn",
+    "shortDescription": "Create and verify ChatGPT-first plugins",
+    "longDescription": "A conversational companion for choosing, scaffolding, validating, packaging, and installing ChatGPT-first plugin projects.",
+    "developerName": "AgentMindCloud",
+    "category": "Developer Tools",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://github.com/AgentMindCloud/ChatGPT_Universal_Spawn",
+    "privacyPolicyURL": "https://github.com/AgentMindCloud/ChatGPT_Universal_Spawn/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/AgentMindCloud/ChatGPT_Universal_Spawn/blob/main/TERMS.md",
+    "defaultPrompt": [
+      "Help me choose and create the right ChatGPT plugin template.",
+      "Validate this plugin and explain every issue in plain language.",
+      "Prepare this plugin for a safe local installation."
+    ],
+    "brandColor": "#2DD4BF",
+    "composerIcon": "./assets/logo-mark.svg",
+    "logo": "./assets/logo-mark.svg",
+    "logoDark": "./assets/logo-mark-dark.svg"
+  }
+}

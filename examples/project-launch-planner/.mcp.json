@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "project-launch-planner": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["./server/mock-server.mjs"]
+    }
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "ChatGPT Universal Spawn"
+  short_description: "Create and verify ChatGPT-first plugins"
+  default_prompt: "Use $chatgpt-universal-spawn to choose the smallest suitable template, validate it, and preview any installation before asking me to confirm."

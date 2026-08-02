@@ -1,0 +1,23 @@
+{
+  "name": "project-launch-planner",
+  "version": "0.1.0",
+  "description": "Build a mock-data project launch plan with MCP tools and an interactive status view.",
+  "author": { "name": "AgentMindCloud" },
+  "repository": "https://github.com/AgentMindCloud/ChatGPT_Universal_Spawn",
+  "license": "Apache-2.0",
+  "keywords": ["project", "launch", "mcp", "ui"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Project Launch Planner",
+    "shortDescription": "Explore a mock launch plan",
+    "longDescription": "A credential-free MCP and MCP Apps UI example using fixed local project data for learning and testing.",
+    "developerName": "AgentMindCloud",
+    "category": "Developer Tools",
+    "capabilities": ["Read", "Interactive"],
+    "defaultPrompt": [
+      "Show the mock project launch plan and flag blocked milestones."
+    ],
+    "brandColor": "#8B5CF6"
+  }
+}

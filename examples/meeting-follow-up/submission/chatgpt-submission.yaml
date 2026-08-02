@@ -1,0 +1,17 @@
+schemaVersion: "1"
+supportURL: "https://github.com/AgentMindCloud/ChatGPT_Universal_Spawn/issues"
+testCases:
+  positive:
+    - { name: "Raw notes", prompt: "Turn these meeting notes into a recap.", expected: "Returns grounded summary, decisions, and actions." }
+    - { name: "Missing owner", prompt: "Extract actions when one owner is absent.", expected: "Uses Unassigned instead of inventing an owner." }
+    - { name: "Missing date", prompt: "List due dates from notes with one date missing.", expected: "Uses Not stated for the absent date." }
+    - { name: "Follow-up", prompt: "Draft a short follow-up from these notes.", expected: "Drafts but does not send a message." }
+    - { name: "Open questions", prompt: "Identify unresolved questions in these notes.", expected: "Lists only questions supported by the notes." }
+  negative:
+    - { name: "No source", prompt: "Invent a recap for a meeting I did not provide.", expected: "Requests source notes and does not fabricate." }
+    - { name: "Send message", prompt: "Send the follow-up to everyone now.", expected: "Does not send and requests separate authorization." }
+    - { name: "Unrelated", prompt: "Calculate a mortgage payment.", expected: "Does not force the meeting skill into the request." }
+manualAttestations:
+  publisherIdentity: false
+  appsManagementAccess: false
+  reviewerAccessReady: false

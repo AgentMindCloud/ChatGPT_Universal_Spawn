@@ -1,0 +1,7 @@
+interface:
+  display_name: {{displayNameYaml}}
+  short_description: {{descriptionYaml}}
+  default_prompt: "Use @{{pluginName}} to guide this task."
+  brand_color: "#2DD4BF"
+policy:
+  allow_implicit_invocation: true

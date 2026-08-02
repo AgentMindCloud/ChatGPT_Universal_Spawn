@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-08-02",
+  "sources": [
+    {
+      "id": "plugin-concepts",
+      "url": "https://developers.openai.com/plugins/concepts/plugins",
+      "expectedTerms": ["plugins", "chatgpt"]
+    },
+    {
+      "id": "plugin-packaging",
+      "url": "https://developers.openai.com/plugins/build/plugins",
+      "expectedTerms": ["plugin.json", ".codex-plugin"]
+    },
+    {
+      "id": "supported-surfaces",
+      "url": "https://learn.chatgpt.com/docs/plugins",
+      "expectedTerms": ["plugins", "chatgpt"]
+    },
+    {
+      "id": "submission-checklist",
+      "url": "https://developers.openai.com/plugins/deploy/submission#final-checklist",
+      "expectedTerms": ["checklist", "test"]
+    },
+    {
+      "id": "gpt-actions",
+      "url": "https://developers.openai.com/api/docs/actions/introduction",
+      "expectedTerms": ["actions", "schema"]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# {{displayName}} MCP server
+
+The scaffold is configured for `{{mcpUrl}}`. Keep `.mcp.json` and `submission/chatgpt-submission.yaml` aligned when the production endpoint changes.
+
+The server should expose narrowly scoped tools with accurate `readOnlyHint`, `openWorldHint`, and `destructiveHint` annotations. Keep authentication and secrets on the server; never place them in the plugin package.

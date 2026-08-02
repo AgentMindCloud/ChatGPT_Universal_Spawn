@@ -1,0 +1,29 @@
+{
+  "name": "meeting-follow-up",
+  "version": "0.1.0",
+  "description": "Turn meeting notes into a concise recap, decisions, and owned action items.",
+  "author": { "name": "AgentMindCloud" },
+  "repository": "https://github.com/AgentMindCloud/ChatGPT_Universal_Spawn",
+  "license": "Apache-2.0",
+  "keywords": ["meeting", "recap", "actions"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Meeting Follow-up",
+    "shortDescription": "Turn notes into clear follow-up",
+    "longDescription": "Creates a grounded meeting recap with decisions, action owners, due dates, open questions, and a ready-to-send follow-up draft.",
+    "developerName": "AgentMindCloud",
+    "category": "Productivity",
+    "capabilities": ["Read"],
+    "websiteURL": "https://github.com/AgentMindCloud/ChatGPT_Universal_Spawn",
+    "privacyPolicyURL": "https://github.com/AgentMindCloud/ChatGPT_Universal_Spawn/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/AgentMindCloud/ChatGPT_Universal_Spawn/blob/main/TERMS.md",
+    "defaultPrompt": [
+      "Turn these meeting notes into a recap and action list.",
+      "Find missing owners or dates in this meeting record."
+    ],
+    "brandColor": "#2DD4BF",
+    "composerIcon": "./assets/logo-mark.svg",
+    "logo": "./assets/logo-mark.svg",
+    "logoDark": "./assets/logo-mark-dark.svg"
+  }
+}

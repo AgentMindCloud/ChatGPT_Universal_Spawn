@@ -1,0 +1,17 @@
+{
+  "name": "invalid-plugin",
+  "version": "version-one",
+  "description": "Demonstrate readable validation failures.",
+  "author": { "name": "Documentation Fixture" },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Invalid Plugin",
+    "shortDescription": "A deliberately invalid fixture",
+    "longDescription": "This package exists only to demonstrate actionable validation diagnostics.",
+    "developerName": "Documentation Fixture",
+    "category": "Developer Tools",
+    "capabilities": ["Read"],
+    "defaultPrompt": ["Run the invalid fixture."],
+    "logo": "./assets/missing.svg"
+  }
+}

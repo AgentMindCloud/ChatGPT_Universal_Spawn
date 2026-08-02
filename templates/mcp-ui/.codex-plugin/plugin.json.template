@@ -1,0 +1,21 @@
+{
+  "name": "{{pluginName}}",
+  "version": "0.1.0",
+  "description": {{descriptionJson}},
+  "author": { "name": {{authorJson}} },
+  "repository": "{{repositoryUrl}}",
+  "license": "Apache-2.0",
+  "keywords": ["chatgpt", "mcp", "ui"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": {{displayNameJson}},
+    "shortDescription": {{descriptionJson}},
+    "longDescription": {{descriptionJson}},
+    "developerName": {{authorJson}},
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Read", "Write"],
+    "defaultPrompt": ["Open {{displayName}} and help me plan this project."],
+    "brandColor": "#8B5CF6"
+  }
+}

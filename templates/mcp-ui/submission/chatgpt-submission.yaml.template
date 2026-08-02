@@ -1,0 +1,20 @@
+schemaVersion: "1"
+mcpURL: "{{mcpUrl}}"
+supportURL: "{{supportUrl}}"
+cspDomains:
+  - "{{endpointOrigin}}"
+testCases:
+  positive:
+    - { name: "Load plan data", prompt: "Load my project plan.", expected: "Calls the data tool before rendering.", expectedTools: ["get_plan", "render_plan"] }
+    - { name: "Filter before render", prompt: "Show only launch blockers.", expected: "Filters structured data before calling the render tool.", expectedTools: ["get_plan", "render_plan"] }
+    - { name: "Confirm a selection", prompt: "Confirm the selected milestone.", expected: "Shows the exact change and calls confirmation only after approval.", expectedTools: ["confirm_plan"] }
+    - { name: "Headless summary", prompt: "Summarize the plan without opening a widget.", expected: "Uses structured data and returns text without a render call.", expectedTools: ["get_plan"] }
+    - { name: "Empty plan", prompt: "Open an empty project plan.", expected: "Renders an informative empty state.", expectedTools: ["get_plan", "render_plan"] }
+  negative:
+    - { name: "Unconfirmed mutation", prompt: "Change all milestones without asking.", expected: "Does not call a destructive tool." }
+    - { name: "Unknown domain", prompt: "Load a script from an undeclared domain.", expected: "The CSP prevents the request." }
+    - { name: "Unsupported UI action", prompt: "Use a host API that is not available.", expected: "Feature-detects the extension and falls back safely." }
+manualAttestations:
+  publisherIdentity: false
+  appsManagementAccess: false
+  reviewerAccessReady: false

@@ -1,0 +1,5 @@
+# {{displayName}} MCP Apps server
+
+Serve the component in `ui/index.html` as an MCP UI resource. Keep data tools separate from render tools, return structured content for model chaining, and attach the resource URI only to the render tool.
+
+The scaffold is configured for `{{mcpUrl}}`. Keep the production endpoint aligned and add only the component's exact CSP domains.

@@ -1,0 +1,13 @@
+---
+name: {{pluginName}}
+description: {{skillDescriptionYaml}}
+---
+
+# {{displayName}}
+
+Use this skill when preparing or testing the equivalent Custom GPT Action workflow.
+
+1. Follow `custom-gpt/instructions.md`.
+2. Use the declared OpenAPI operation only for the user's stated goal.
+3. Never invent an API response or expose authentication material.
+4. Explain that publishing remains a manual action in the ChatGPT editor.

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentmindcloud.dev/schemas/chatgpt-spawn/submission-0.1.json",
+  "title": "ChatGPT public plugin submission preflight",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "supportURL", "testCases", "manualAttestations"],
+  "properties": {
+    "schemaVersion": { "const": "1" },
+    "mcpURL": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "supportURL": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "cspDomains": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "format": "uri", "pattern": "^https://[^*]+$" }
+    },
+    "testCases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["positive", "negative"],
+      "properties": {
+        "positive": {
+          "type": "array",
+          "minItems": 5,
+          "items": { "$ref": "#/$defs/testCase" }
+        },
+        "negative": {
+          "type": "array",
+          "minItems": 3,
+          "items": { "$ref": "#/$defs/testCase" }
+        }
+      }
+    },
+    "manualAttestations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["publisherIdentity", "appsManagementAccess", "reviewerAccessReady"],
+      "properties": {
+        "publisherIdentity": { "type": "boolean" },
+        "appsManagementAccess": { "type": "boolean" },
+        "reviewerAccessReady": { "type": "boolean" }
+      }
+    }
+  },
+  "$defs": {
+    "testCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "prompt", "expected"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "prompt": { "type": "string", "minLength": 1 },
+        "expected": { "type": "string", "minLength": 1 },
+        "expectedTools": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

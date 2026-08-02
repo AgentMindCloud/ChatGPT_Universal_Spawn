@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144" role="img" aria-labelledby="title desc">
+  <title id="title">ChatGPT Universal Spawn portal mark</title>
+  <desc id="desc">Three tool nodes enter two opposing conversation bubbles that form an open portal.</desc>
+  <g fill="none" stroke="#2DD4BF" stroke-width="6" stroke-linecap="round">
+    <path d="M8 44h18"/>
+    <path d="M8 72h18"/>
+    <path d="M8 100h18"/>
+  </g>
+  <circle cx="8" cy="44" r="7" fill="#2DD4BF"/>
+  <circle cx="8" cy="72" r="7" fill="#8B5CF6"/>
+  <rect x="1" y="93" width="14" height="14" rx="3" fill="#0B1020"/>
+  <path fill="#0B1020" d="M58 14H43c-16 0-28 12-28 28v48c0 16 12 28 28 28h4l-7 18 28-18V89H55V43h13V14H58Z"/>
+  <path fill="#8B5CF6" d="M86 14h15c16 0 28 12 28 28v48c0 16-12 28-28 28h-4l7 18-28-18V89h13V43H76V14h10Z"/>
+  <path d="M68 52 56 61v36l12 9 12-9V61L68 52Z" fill="#F8FAFC"/>
+  <path d="M91 72h36" fill="none" stroke="#2DD4BF" stroke-width="7" stroke-linecap="round"/>
+  <path d="m127 61 12 11-12 11" fill="none" stroke="#2DD4BF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

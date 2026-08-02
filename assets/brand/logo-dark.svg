@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 190" role="img" aria-labelledby="title desc">
+  <title id="title">ChatGPT Universal Spawn</title>
+  <desc id="desc">Portal and conversation logo for the independent ChatGPT-first plugin toolkit, optimized for dark backgrounds.</desc>
+  <g transform="translate(20 15) scale(1.1)">
+    <g fill="none" stroke="#2DD4BF" stroke-width="6" stroke-linecap="round"><path d="M8 44h18"/><path d="M8 72h18"/><path d="M8 100h18"/></g>
+    <circle cx="8" cy="44" r="7" fill="#2DD4BF"/><circle cx="8" cy="72" r="7" fill="#A78BFA"/><rect x="1" y="93" width="14" height="14" rx="3" fill="#F8FAFC"/>
+    <path fill="#F8FAFC" d="M58 14H43c-16 0-28 12-28 28v48c0 16 12 28 28 28h4l-7 18 28-18V89H55V43h13V14H58Z"/>
+    <path fill="#A78BFA" d="M86 14h15c16 0 28 12 28 28v48c0 16-12 28-28 28h-4l7 18-28-18V89h13V43H76V14h10Z"/>
+    <path d="M68 52 56 61v36l12 9 12-9V61L68 52Z" fill="#0B1020"/>
+    <path d="M91 72h36m0-11 12 11-12 11" fill="none" stroke="#2DD4BF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="205" y="92" fill="#F8FAFC" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="55" font-weight="750" letter-spacing="-1.8">ChatGPT Universal Spawn</text>
+  <text x="208" y="132" fill="#CBD5E1" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="19" font-weight="550" letter-spacing="1.1">CREATE · VERIFY · PACKAGE · INSTALL</text>
+</svg>

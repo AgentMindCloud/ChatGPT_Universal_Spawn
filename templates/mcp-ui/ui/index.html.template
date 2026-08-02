@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{displayName}}</title>
+    <style>
+      :root { color-scheme: light dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      body { margin: 0; padding: 20px; background: #0b1020; color: #f8fafc; }
+      main { border: 1px solid #2dd4bf55; border-radius: 18px; padding: 20px; background: #11182b; }
+      h1 { margin: 0 0 8px; font-size: 20px; }
+      p { color: #cbd5e1; line-height: 1.5; }
+      button { border: 0; border-radius: 10px; padding: 10px 14px; background: #2dd4bf; color: #0b1020; font-weight: 700; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>{{displayName}}</h1>
+      <p id="summary">Waiting for structured tool data.</p>
+      <button id="confirm" type="button">Confirm selection</button>
+    </main>
+    <script type="module">
+      const summary = document.querySelector("#summary");
+      window.addEventListener("message", (event) => {
+        const message = event.data;
+        if (message?.method === "ui/notifications/tool-result") {
+          summary.textContent = message.params?.structuredContent?.summary ?? "Result received.";
+        }
+      });
+      document.querySelector("#confirm").addEventListener("click", async () => {
+        if (window.openai?.callTool) {
+          await window.openai.callTool("confirm_plan", { confirmed: true });
+        }
+      });
+    </script>
+  </body>
+</html>

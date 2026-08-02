@@ -1,0 +1,10 @@
+schemaVersion: "1"
+instructions: "./custom-gpt/instructions.md"
+conversationStarters:
+  - "Look up an item for me."
+  - "Explain what information this action can retrieve."
+knowledge:
+  - "./custom-gpt/knowledge/README.md"
+actions:
+  - openapi: "./custom-gpt/openapi.yaml"
+    auth: none

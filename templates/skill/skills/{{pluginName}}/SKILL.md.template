@@ -1,0 +1,23 @@
+---
+name: {{pluginName}}
+description: {{skillDescriptionYaml}}
+---
+
+# {{displayName}}
+
+Use this skill when the user asks for the workflow described below.
+
+## Workflow
+
+1. Confirm the desired outcome and inspect any supplied source material.
+2. Ask only for missing information that materially changes the result.
+3. Complete the work using the tools already available to ChatGPT.
+4. Return a concise result with assumptions and any follow-up action.
+
+## Success criteria
+
+- The result directly answers the request.
+- Facts that were not established are labeled as assumptions.
+- No external action is taken without the user's authorization.
+
+Project purpose: {{description}}

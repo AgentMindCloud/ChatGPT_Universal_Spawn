@@ -1,0 +1,15 @@
+---
+name: {{pluginName}}
+description: {{skillDescriptionYaml}}
+---
+
+# {{displayName}}
+
+Use this skill when the user's goal requires the bundled MCP tools.
+
+1. Identify the minimum tool needed for the request.
+2. Prefer read-only tools until the user explicitly requests a change.
+3. Summarize the proposed mutation before calling a destructive or open-world tool.
+4. Report the tool result without exposing internal identifiers or secrets.
+
+If the MCP server is unavailable or unauthenticated, explain the missing connection and stop safely.

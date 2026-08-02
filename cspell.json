@@ -1,0 +1,39 @@
+{
+  "version": "0.2",
+  "language": "en,en-GB",
+  "useGitignore": true,
+  "ignorePaths": [
+    "node_modules/**",
+    "dist/**",
+    "package-lock.json",
+    "tests/fixtures/**",
+    "assets/**/*.svg",
+    "docs/images/**"
+  ],
+  "words": [
+    "AgentMindCloud",
+    "AKIA",
+    "asdk",
+    "ChatGPT",
+    "Codex",
+    "CSP",
+    "frontmatter",
+    "fflate",
+    "GPTs",
+    "linkinator",
+    "marketplaces",
+    "MCP",
+    "noninteractive",
+    "openapi",
+    "OpenAI",
+    "preflight",
+    "pousr",
+    "PowerShell",
+    "semver",
+    "stdio",
+    "toolkit",
+    "webp",
+    "wordmarks",
+    "Zippable"
+  ]
+}

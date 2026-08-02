@@ -1,0 +1,15 @@
+ChatGPT Universal Spawn
+Copyright 2026 AgentMindCloud
+
+This product is a derivative work based on the archive universal-spawn-main.zip,
+analyzed from upstream commit b35bc1fb6aa6e6315365352a5ed1fef05d41e3b6.
+
+Archive SHA-256:
+F2AEDF68C5616C06FB5D406D5DFB5DF7BD545E78CB94F31815B73F135DC7AB05
+
+The original work and this derivative are distributed under the Apache License,
+Version 2.0. This rewrite retains upstream attribution but does not import the
+upstream platform catalog, obsolete generators, or third-party brand assets.
+
+ChatGPT and OpenAI are trademarks of OpenAI. This independent AgentMindCloud
+project is not affiliated with, endorsed by, or sponsored by OpenAI.

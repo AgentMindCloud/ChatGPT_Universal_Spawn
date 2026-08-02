@@ -1,0 +1,6 @@
+tests/
+examples/
+.github/
+coverage/
+*.zip
+*.sha256

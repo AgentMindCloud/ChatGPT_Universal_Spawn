@@ -1,7 +1,7 @@
 {
   "name": "@agentmindcloud/chatgpt-spawn",
-  "version": "0.1.0",
-  "description": "Scaffold, validate, package, and install ChatGPT-first plugins.",
+  "version": "0.1.1",
+  "description": "Create ChatGPT prompt packs and full ChatGPT-first plugins.",
   "type": "module",
   "license": "Apache-2.0",
   "author": "AgentMindCloud",

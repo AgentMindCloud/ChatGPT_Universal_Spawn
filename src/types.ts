@@ -124,6 +124,17 @@ export interface CustomGptExportResult {
   checksumPath: string;
 }
 
+export interface PersonalChatExportOptions {
+  out: string;
+  force?: boolean;
+}
+
+export interface PersonalChatExportResult {
+  out: string;
+  files: string[];
+  checksumPath: string;
+}
+
 export interface DoctorOptions {
   checkDocs?: boolean;
 }

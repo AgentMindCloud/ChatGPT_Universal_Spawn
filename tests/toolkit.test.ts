@@ -9,6 +9,7 @@ import {
   applyInstall,
   buildPluginArchive,
   exportCustomGpt,
+  exportPersonalChat,
   linkRegisteredApp,
   planInstall,
   scaffoldPlugin,
@@ -233,6 +234,35 @@ describe("Custom GPT export", () => {
     await writeFile(configPath, config.replace('  - "./custom-gpt/knowledge/README.md"', '  - "./custom-gpt/knowledge/README.md"\n  - "./other/README.md"'));
     const outParent = await tempRoot();
     await expect(exportCustomGpt(root, { out: join(outParent, "export") })).rejects.toThrow("collision");
+  });
+});
+
+describe("personal ChatGPT export", () => {
+  it("creates a self-contained, key-free prompt pack from a skills-only plugin", async () => {
+    const root = await scaffold("skill", "portable-workflow");
+    const outParent = await tempRoot();
+    const result = await exportPersonalChat(root, { out: join(outParent, "personal-chat") });
+    expect(result.files).toEqual(["CHATGPT-PROMPT.md", "START-HERE.md", "SHA256SUMS"]);
+    const prompt = await readFile(join(result.out, "CHATGPT-PROMPT.md"), "utf8");
+    const guide = await readFile(join(result.out, "START-HERE.md"), "utf8");
+    expect(prompt).toContain("# Portable Workflow");
+    expect(prompt).toContain("Never request an API key");
+    expect(guide).toContain("no workspace, app ID, API key");
+    expect(await readFile(result.checksumPath, "utf8")).toContain("CHATGPT-PROMPT.md");
+  });
+
+  it("rejects MCP plugins and output inside the source tree", async () => {
+    const skillRoot = await scaffold("skill", "contained-export");
+    await expect(exportPersonalChat(skillRoot, { out: join(skillRoot, "export") })).rejects.toThrow("outside the plugin source tree");
+    const mcpRoot = await scaffold("mcp", "tool-backed-export");
+    const outParent = await tempRoot();
+    await expect(exportPersonalChat(mcpRoot, { out: join(outParent, "export") })).rejects.toThrow("skills-only plugins");
+  });
+
+  it("exports the self-hosting companion for normal ChatGPT conversations", async () => {
+    const outParent = await tempRoot();
+    const result = await exportPersonalChat(resolve(REPOSITORY_ROOT, "plugin/chatgpt-universal-spawn"), { out: join(outParent, "companion") });
+    expect(await readFile(join(result.out, "CHATGPT-PROMPT.md"), "utf8")).toContain("export personal-chat");
   });
 });
 

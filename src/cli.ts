@@ -2,10 +2,10 @@
 import { createInterface } from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 import { Command, Option } from "commander";
-import { applyInstall, buildPluginArchive, doctorPlugin, exportCustomGpt, linkRegisteredApp, planInstall, scaffoldPlugin, validatePlugin } from "./index.js";
+import { applyInstall, buildPluginArchive, doctorPlugin, exportCustomGpt, exportPersonalChat, linkRegisteredApp, planInstall, scaffoldPlugin, validatePlugin } from "./index.js";
 import type { InstallPlan, PluginTemplate, ValidationReport } from "./types.js";
 
-const VERSION = "0.1.0";
+const VERSION = "0.1.1";
 const program = new Command();
 
 function printValidation(report: ValidationReport): void {
@@ -97,7 +97,7 @@ async function completeInitOptions(values: {
 
 program
   .name("chatgpt-spawn")
-  .description("Create, validate, package, and locally install ChatGPT-first plugins.")
+  .description("Create personal ChatGPT prompt packs and full ChatGPT-first plugins.")
   .version(VERSION);
 
 program
@@ -184,6 +184,20 @@ program
   });
 
 const exportCommand = program.command("export").description("Export artifacts for manual workflows.");
+exportCommand
+  .command("personal-chat")
+  .description("Export a skills-only prompt pack for normal ChatGPT chats; no app ID or API key required.")
+  .argument("<dir>", "Skills-only plugin directory")
+  .requiredOption("--out <dir>", "Output directory")
+  .option("--force", "Replace a non-empty output directory")
+  .action(async (dir: string, options) => {
+    const result = await exportPersonalChat(dir, { out: options.out, force: options.force === true });
+    console.log("Personal ChatGPT export complete");
+    console.log(`  Directory: ${result.out}`);
+    console.log(`  Files:     ${result.files.length}`);
+    console.log(`  Checksums: ${result.checksumPath}`);
+    console.log("  Next: open START-HERE.md; no workspace, app ID, API key, or installation is required.");
+  });
 exportCommand
   .command("custom-gpt")
   .description("Export a manual Custom GPT editor bundle; this does not create or publish a GPT.")

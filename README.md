@@ -6,7 +6,7 @@
   </picture>
 </p>
 
-<p align="center"><strong>Turn a useful workflow into a safe, reviewable ChatGPT plugin package.</strong></p>
+<p align="center"><strong>Turn a useful workflow into a personal ChatGPT prompt pack or a full, reviewable plugin package.</strong></p>
 
 <p align="center">
   <a href="https://github.com/AgentMindCloud/ChatGPT_Universal_Spawn/actions/workflows/ci.yml"><img alt="Continuous integration status" src="https://github.com/AgentMindCloud/ChatGPT_Universal_Spawn/actions/workflows/ci.yml/badge.svg"></a>
@@ -27,7 +27,7 @@ ChatGPT plugins can combine three building blocks:
 - An **MCP server** gives ChatGPT callable tools, such as searching an approved database or creating a project item.
 - An **MCP Apps UI** adds an interactive interface to an MCP-backed tool.
 
-This toolkit creates the right folder, checks it for broken paths and risky files, builds a reproducible ZIP, previews local marketplace changes before writing them, links a real registered MCP app ID, and exports manual Custom GPT artifacts. You do not need to understand MCP to start with the skills-only template.
+This toolkit creates the right folder, checks it for broken paths and risky files, and supports two practical routes. **Personal mode** exports a copy-and-paste ChatGPT prompt that needs no workspace, app ID, API key, server, or plugin installation. **Developer mode** builds reproducible plugin ZIPs, previews marketplace changes, links registered MCP apps, and exports manual Custom GPT artifacts.
 
 ![Create, validate, build, install, and use workflow with a human confirmation before installation](./docs/images/readme/workflow-overview.svg)
 
@@ -37,13 +37,15 @@ The normal workflow never writes outside the directory you select. Only `install
 
 | Surface | v1 status | What that means |
 | --- | --- | --- |
+| Normal ChatGPT conversation | Supported through personal export | A skills-only project becomes a self-contained prompt pack that the user copies into a chat. No app registration or API key. |
+| ChatGPT custom instructions | Manual prompt use | The personal prompt can be copied into custom instructions when it fits the account's current limits. |
 | ChatGPT Work on the web | Supported | Uses the official plugin package built around `.codex-plugin/plugin.json`. |
 | ChatGPT desktop Work mode | Supported | Uses the same package and registered MCP app identity where required. |
 | Shared ChatGPT/Codex plugin directory | Supported | A single plugin package can be used by the supported ChatGPT Work and Codex plugin flows. |
 | Personal marketplace | Supported | Installs under the default `~/.agents/plugins/marketplace.json` marketplace. |
 | Repository marketplace | Supported | Installs under `<repo>/.agents/plugins/marketplace.json` only when explicitly selected. |
 | Custom GPT editor | Export only | Produces instructions, knowledge, OpenAPI actions, starters, checksums, and a manual checklist. |
-| General ChatGPT chat, mobile-only plugin management, or IDE surfaces | Not claimed | v1 does not claim support where the official plugin surface is unavailable. |
+| Mobile-only plugin management or unsupported IDE surfaces | Not claimed | The personal prompt remains usable as text, but v1 does not claim plugin installation where that surface is unavailable. |
 | Automatic GPT creation or Store publishing | Not supported | No documented creation API is assumed; publication remains a human action. |
 
 The implementation follows the first-party [plugin architecture](https://developers.openai.com/plugins/concepts/plugins), [plugin packaging](https://developers.openai.com/plugins/build/plugins), [supported ChatGPT surfaces](https://learn.chatgpt.com/docs/plugins), [submission checklist](https://developers.openai.com/plugins/deploy/submission#final-checklist), and [GPT Actions](https://developers.openai.com/api/docs/actions/introduction) documentation.
@@ -52,13 +54,31 @@ The implementation follows the first-party [plugin architecture](https://develop
 
 ![Decision diagram for choosing skill, MCP, MCP UI, or Custom GPT Action templates](./docs/images/readme/choose-template.svg)
 
+### I have a normal ChatGPT account
+
+Choose the skills-only template, then export a portable prompt pack:
+
+```powershell
+node .\dist\cli.js export personal-chat .\meeting-follow-up --out .\meeting-follow-up-chat
+```
+
+Open `meeting-follow-up-chat/START-HERE.md`. Copy `CHATGPT-PROMPT.md` into a normal conversation, then provide your meeting notes. This route does not install anything and requires no workspace, app ID, API key, MCP server, or marketplace.
+
 ### I want ChatGPT to guide me conversationally
 
-Build the project, preview the self-hosting companion, then install it into your personal marketplace:
+Build the project and export the self-hosting companion as a normal-chat prompt:
 
 ```powershell
 npm ci
 npm run build
+node .\dist\cli.js export personal-chat .\plugin\chatgpt-universal-spawn --out .\chatgpt-spawn-companion
+```
+
+Paste `chatgpt-spawn-companion/CHATGPT-PROMPT.md` into a normal conversation, then ask: `Help me choose and create the right ChatGPT workflow.` This requires no registration or installation.
+
+If your client exposes a supported plugin marketplace, you can instead preview and install the full companion:
+
+```powershell
 node .\dist\cli.js install .\plugin\chatgpt-universal-spawn --marketplace personal --dry-run
 node .\dist\cli.js install .\plugin\chatgpt-universal-spawn --marketplace personal
 ```
@@ -104,11 +124,10 @@ node .\dist\cli.js init .\meeting-follow-up `
 
 node .\dist\cli.js validate .\meeting-follow-up --profile local
 node .\dist\cli.js build .\meeting-follow-up --out .\dist\meeting-follow-up.zip
-node .\dist\cli.js install .\meeting-follow-up --marketplace personal --dry-run
-node .\dist\cli.js install .\meeting-follow-up --marketplace personal
+node .\dist\cli.js export personal-chat .\meeting-follow-up --out .\meeting-follow-up-chat
 ```
 
-PowerShell uses the backtick at the end of a line for continuation. You can also put each command on one line.
+Open `.\meeting-follow-up-chat\START-HERE.md`, copy all of `CHATGPT-PROMPT.md` into a normal ChatGPT conversation, and send your notes in the next message. PowerShell uses the backtick at the end of a line for continuation. You can also put each command on one line.
 
 ### macOS or Linux
 
@@ -127,9 +146,12 @@ node ./dist/cli.js init ./meeting-follow-up \
 
 node ./dist/cli.js validate ./meeting-follow-up --profile local
 node ./dist/cli.js build ./meeting-follow-up --out ./dist/meeting-follow-up.zip
-node ./dist/cli.js install ./meeting-follow-up --marketplace personal --dry-run
-node ./dist/cli.js install ./meeting-follow-up --marketplace personal
+node ./dist/cli.js export personal-chat ./meeting-follow-up --out ./meeting-follow-up-chat
 ```
+
+Open `./meeting-follow-up-chat/START-HERE.md`, copy all of `CHATGPT-PROMPT.md` into a normal ChatGPT conversation, and send your notes in the next message.
+
+The quickstart intentionally uses personal mode. If you have a supported plugin marketplace, continue with the detailed installation walkthrough.
 
 When the npm package is published, the equivalent entrypoint is:
 
@@ -342,6 +364,27 @@ Add `--online` only when you want the CLI to contact the declared public MCP end
 
 Start with `skill` unless a requirement clearly demands a new tool. Start with `mcp` unless an interactive interface materially helps users.
 
+## Personal ChatGPT export
+
+This is the default route for people without workspace administration, Apps Management, an app ID, an API key, or an MCP server:
+
+```powershell
+node .\dist\cli.js export personal-chat .\meeting-follow-up --out .\meeting-follow-up-chat
+```
+
+The output is deliberately small:
+
+```text
+meeting-follow-up-chat/
+├── START-HERE.md
+├── CHATGPT-PROMPT.md
+└── SHA256SUMS
+```
+
+`CHATGPT-PROMPT.md` contains the validated skill instructions plus guardrails against claiming unavailable tools or asking for secrets. `START-HERE.md` explains exactly what to copy and includes the plugin's conversation starters. This export accepts skills-only plugins; it rejects MCP and MCP UI projects because a text prompt cannot honestly reproduce external tools.
+
+OpenAI's current personalization documentation also describes [custom instructions](https://learn.chatgpt.com/docs/personalize#add-custom-instructions) for preferences that should carry across chats. Copying the prompt into a single conversation is the simplest route and avoids depending on account-specific instruction limits.
+
 ## Custom GPT export
 
 Create and export a project:
@@ -394,6 +437,7 @@ import {
   applyInstall,
   buildPluginArchive,
   exportCustomGpt,
+  exportPersonalChat,
   linkRegisteredApp,
   planInstall,
   scaffoldPlugin,
@@ -409,6 +453,7 @@ The package exports:
 - `planInstall(root, options): Promise<InstallPlan>`
 - `applyInstall(plan, { confirmed }): Promise<InstallResult>`
 - `linkRegisteredApp(root, appId): Promise<LinkResult>`
+- `exportPersonalChat(root, options): Promise<PersonalChatExportResult>`
 - `exportCustomGpt(root, options): Promise<CustomGptExportResult>`
 
 `InstallPlan` includes the exact source, destination, marketplace before/after state, conflicts, replacement flag, and rollback data so another interface can present the same confirmation boundary.
@@ -430,6 +475,10 @@ node .\dist\cli.js doctor .\meeting-follow-up --check-docs
 The lock is [`compat/openai-docs.lock.json`](./compat/openai-docs.lock.json). CI checks drift weekly so changing OpenAI surfaces are reviewed rather than silently assumed.
 
 ## Troubleshooting
+
+### I do not have a workspace, app ID, or API key
+
+Use a skills-only template and run `export personal-chat`. Open `START-HERE.md` and paste `CHATGPT-PROMPT.md` into a normal ChatGPT conversation. Do not run `link-app` or install an MCP template.
 
 ### `Noninteractive init requires: --template, --name, --description, --author, --repository`
 
@@ -493,6 +542,10 @@ compat/     Locked first-party OpenAI documentation references
 **Do I need an MCP server?**
 
 No. Most instruction-driven workflows should start with `skill`.
+
+**Do I need a paid workspace, app ID, or API key?**
+
+No for `export personal-chat`. Those are needed only for the separate features that actually register apps, expose MCP tools, or call authenticated services.
 
 **Does this upload my plugin to OpenAI?**
 
